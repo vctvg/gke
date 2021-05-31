@@ -22,7 +22,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo "3.Build Docker Image Stage"
-                sh "docker build -t vctvg/kbtest:${build_tag} ."
+                sh "docker build -u root -t vctvg/kbtest:${build_tag} ."
             }
         }
         stage('Push') {
