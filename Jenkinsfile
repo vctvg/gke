@@ -16,7 +16,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                echo "2. Test Stage"
+                echo "2.Test Stage"
             }
         }
         stage('Build') {
@@ -37,8 +37,10 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo "5. Deploy Stage"
-                if (env.BRANCH_NAME == 'master') {
-                    input "Confirm？"
+                script {
+                    if (env.BRANCH_NAME == 'master') {
+                        input "Confirm？"
+                    }
                 }
                 sh "sed -i 's/<BUILD_TAG>/${build_tag}/' dep.yml"
                 sh "sed -i 's/<BRANCH_NAME>/${env.BRANCH_NAME}/' dep.yml"
