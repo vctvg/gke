@@ -1,6 +1,5 @@
 pipeline {
-    agent any
-
+    agent {label 'jnlp'}
     stages {
         stage('Prepare') {
             steps {
