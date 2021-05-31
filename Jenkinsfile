@@ -38,7 +38,7 @@ pipeline {
                 echo "5. Deploy Stage"
                 script {
                     if (env.BRANCH_NAME == 'master') {
-                        input "Confirm？"
+                        input "Confirm?"
                     }
                 }
                 sh "sed -i 's/<BUILD_TAG>/${build_tag}/' dep.yml"
