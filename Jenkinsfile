@@ -18,7 +18,7 @@ node('jnlp') {
     }
     stage('Push') {
         echo "4.Push Docker Image Stage"
-        withCredentials([usernamePassword(credentialsId: 'dockerHub', passwordVariable: 'RegistryPassword', usernameVariable: 'RegistryUser')]) {
+        withCredentials([usernamePassword(credentialsId: 'Registry', passwordVariable: 'RegistryPassword', usernameVariable: 'RegistryUser')]) {
             sh "docker login -u ${RegistryUser} -p ${RegistryPassword}"
             sh "docker push vctvg/kbtest:${build_tag}"
         }
